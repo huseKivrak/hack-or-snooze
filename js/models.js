@@ -72,39 +72,56 @@ class StoryList {
    */
 
   // TODO:
+  // THOUGHTS: change our argument newStory to a set of keys
+  // without values (author, title, url) (SEE ABOVE);
+
+  // set a const variable for our token
+
+  // Design our axios call similar to the example from yesterday (ie method:
+  // POST ) ^^^ See get stories
+
+  // create some key value in our story object that will hold all of our info.
+  // ie title: title.
+
   async addStory(user, newStory) {
     console.log("addStory called");
 
     // UNIMPLEMENTED: complete this function!
     console.log(user.loginToken);
 
-    const response = new Story(
-      await axios.post(
-        `${BASE_URL}/stories`,
-        {
-          token: user.loginToken,
-          story: newStory,
-        },
-        {
-          params: {
-            title: newStory.title,
-            author: newStory.author,
-            url: newStory.url,
-          },
-        }
-      )
-    );
-    Request URL: https://hack-or-snooze-v3.herokuapp.com/stories?title=Test&author=Me&url=http:%2F%2Fmeow.com
+    const response = await axios.post(`${BASE_URL}/stories`, {
+      token: user.loginToken,
+      story: {
+        author: newStory.author,
+        title: newStory.title,
+        url: newStory.url,
+      },
+    });
 
-
-
-
+    // Request URL: https://hack-or-snooze-v3.herokuapp.com/stories?title=Test&author=Me&url=http:%2F%2Fmeow.com
     //'{"token":"PASTE_YOUR_TOKEN_HERE", "story": {"author":"Elie Schoppik","title":"Four Tips for Moving Faster as a Developer",
     // "url": "https://www.rithmschool.com/blog/developer-productivity"} }' \
     // https://hack-or-snooze-v3.herokuapp.com/stories
-    console.log("response: ", response);
+    const responseData = response.data.story;
+
+    console.log("responseData", response.data.story);
+
+    const addedStory = new Story(responseData);
+
+    console.log("addedStory instanceof story", addedStory instanceof Story);
+    // storyId, title, author, url, username, createdAt
   }
 }
+
+// BODY
+// {
+//   "token": "YOUR_TOKEN_HERE",
+//   "story": {
+//     "author": "Matt Lane",
+//     "title": "The best story ever",
+//     "url": "http://google.com"
+//   }
+// }
 
 /******************************************************************************
  * User: a user in the system (only used to represent the current user)
