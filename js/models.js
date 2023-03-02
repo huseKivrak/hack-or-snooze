@@ -103,7 +103,6 @@ class StoryList {
     // "url": "https://www.rithmschool.com/blog/developer-productivity"} }' \
     // https://hack-or-snooze-v3.herokuapp.com/stories
     const responseData = response.data.story;
-
     console.log("responseData", response.data.story);
 
     const addedStory = new Story(responseData);

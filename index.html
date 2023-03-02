@@ -33,6 +33,9 @@
     <nav>
       <div class="navbar-brand">
         <a class="nav-link" href="#" id="nav-all">Hack or Snooze</a>
+        <a class="nav-link" href="#" id="nav-submit">submit</a>
+        <a class="nav-link" href="/favorites" id="nav-favorite">favorites</a>
+        <a class="nav-link" href="/mystories" id="nav-myStories">my stories</a>
       </div>
       <div class="nav-right">
         <a class="nav-link" href="#" id="nav-login">login/signup</a>
@@ -40,21 +43,24 @@
         <a class="hidden" id="nav-logout" href="#"><small>(logout)</small></a>
       </div>
     </nav>
-    <form id="add-story-form" class="hidden">
-      <div class="author-input">
-        <label for="author-name">Author</label>
-        <input id="author-name" placeholder="Author Name" />
-      </div>
-      <div class="title-input">
-        <label for="title-name">Title</label>
-        <input id="title-name" placeholder="Story Title" />
-      </div>
-      <div class="url-input">
-        <label for="url-name">URL</label>
-        <input id="url-name" placeholder="Story URL" />
-      </div>
-    </form>
 
+    <!-- submit story form  -->
+    <section class="submit-form-container hidden">
+      <form id="add-story-form">
+        <div class="author-input">
+          <label for="author-name">Author</label>
+          <input id="author-name" placeholder="Author Name" />
+        </div>
+        <div class="title-input">
+          <label for="title-name">Title</label>
+          <input id="title-name" placeholder="Story Title" />
+        </div>
+        <div class="url-input">
+          <label for="url-name">URL</label>
+          <input id="url-name" placeholder="Story URL" />
+        </div>
+      </form>
+    </section>
     <!-- area for stories (all stories, user stories, favorites) -->
     <section class="stories-container container">
       <!-- loading message (removed by JS after stories loaded) -->

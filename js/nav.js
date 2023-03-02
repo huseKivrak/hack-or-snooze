@@ -36,3 +36,16 @@ function updateNavOnLogin() {
   $navLogOut.show();
   $navUserProfile.text(`${currentUser.username}`).show();
 }
+
+function navShowSubmitForm(evt){
+  console.log('submit form called');
+  evt.preventDefault();
+  const $submitFormSection = $('.submit-form-container');
+
+  $submitFormSection.show();
+}
+
+
+
+const $navSubmit = $('#nav-submit');
+$navSubmit.on('click', navShowSubmitForm);
