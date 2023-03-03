@@ -205,6 +205,62 @@ class User {
     }
   }
 
+  async addFavorite(story) {
+    console.log(
+      `${BASE_URL}/users/${this.username}/favorites/${story.storyId}`
+    );
+    this.favorites.push(story);
+    const response = await axios({
+      data: {
+        token: currentUser.loginToken,
+      },
+      url: `${BASE_URL}/users/${this.username}/favorites/${story.storyId}`,
+      method: "POST",
+    });
+    console.log(response.data);
+    // ADD FAVORITE TO DOM
+  }
+
+  async removeFavorite(story) {
+    this.favorites.splice(this.favorites.indexOf(story), 1);
+
+    const response = await axios({
+      data: {
+        token: currentUser.loginToken,
+      },
+      url: `${BASE_URL}/users/${this.username}/favorites/${story.storyId}`,
+      method: "DELETE",
+    });
+    console.log("response deleted", response.data);
+    // REMOVE FAV FROM DOM
+  }
+
+  // let story = storyList.stories[0];   // grab first story on list
+  // currentUser.addFavorite(story);
+
+  // async removeFavorite(story) {
+  //   for (let favorite of this.favorites) {
+  //     if (story ===)
+  //   }
+  // }
+
+  // const response = await axios({
+  //   url: `${BASE_URL}/signup`,
+  //   method: "POST",
+  //   data: { user: { username, password, name } },
+  // });
+
+  // https://hack-or-snooze-v3.herokuapp.com/users/username/favorites/storyId
+
+  // const response = await axios.post(`${BASE_URL}/stories`, {
+  //   token: user.loginToken,
+  //   story: {
+  //     author: newStory.author,
+  //     title: newStory.title,
+  //     url: newStory.url,
+  //   },
+  // });
+
   /*
     addFavorite(){
         //update the favorites array of this
