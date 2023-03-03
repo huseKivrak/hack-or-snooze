@@ -23,7 +23,7 @@ class Story {
   /** Parses hostname out of URL and returns it. */
 
   getHostName() {
-    // TODO  UNIMPLEMENTED: complete this function!
+    // TODO:  UNIMPLEMENTED: complete this function!
     return "hostname.com";
   }
 }
@@ -85,8 +85,6 @@ class StoryList {
 
   async addStory(user, newStory) {
     console.log("addStory called");
-
-    // UNIMPLEMENTED: complete this function!
     console.log(user.loginToken);
 
     const response = await axios.post(`${BASE_URL}/stories`, {
@@ -106,9 +104,7 @@ class StoryList {
     console.log("responseData", response.data.story);
 
     const addedStory = new Story(responseData);
-
-    console.log("addedStory instanceof story", addedStory instanceof Story);
-    // storyId, title, author, url, username, createdAt
+    return addedStory;
   }
 }
 

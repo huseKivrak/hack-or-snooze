@@ -50,3 +50,39 @@ function putStoriesOnPage() {
 
   $allStoriesList.show();
 }
+
+async function getSubmitFormData(evt) {
+  evt.preventDefault();
+  // "author-name"
+  // "title-name"
+  // "url-name"
+  const $author = $("#author-name").val();
+  const $title = $("#title-name").val();
+  const $url = $("#url-name").val();
+
+  const newStorySubmission = {
+    author: $author,
+    title: $title,
+    url: $url,
+  };
+
+  // console.log("newStorySub: ", newStorySubmission);
+  const addedStory = await storyList.addStory(currentUser, newStorySubmission);
+  console.log('addedStory', addedStory);
+
+
+  const storyHtml = `<li id=${addedStory.storyId}>
+  <a href="${addedStory.url}" target="a_blank" class="story-link">${addedStory.title}</a>
+ <small class="story-hostname">(hostname.com)</small>
+ <small class="story-author">${addedStory.author}</small>
+ <small class="story-user">${currentUser}</small>
+ </li>`;
+
+ console.log('storyHtml: ', storyHtml);
+//  const $allStoriesList = $('#all-stories-list');
+
+ $allStoriesList.prepend(storyHtml);
+}
+
+const $newStoryForm = $("#add-story-form");
+$newStoryForm.on("submit", getSubmitFormData);
