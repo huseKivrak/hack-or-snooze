@@ -31,8 +31,7 @@ function generateStoryMarkup(story) {
         <small class="story-hostname">(${hostName})</small>
         <small class="story-author">by ${story.author}</small>
         <small class="story-user">posted by ${story.username}</small>
-      </li>
-    `);
+      </li>`);
 }
 
 /** Gets list of stories from server, generates their HTML, and puts on page. */
