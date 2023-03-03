@@ -71,21 +71,8 @@ class StoryList {
    * Returns the new Story instance
    */
 
-  // TODO:
-  // THOUGHTS: change our argument newStory to a set of keys
-  // without values (author, title, url) (SEE ABOVE);
-
-  // set a const variable for our token
-
-  // Design our axios call similar to the example from yesterday (ie method:
-  // POST ) ^^^ See get stories
-
-  // create some key value in our story object that will hold all of our info.
-  // ie title: title.
-
   async addStory(user, newStory) {
-    console.log("addStory called");
-    console.log(user.loginToken);
+    console.log("Story added");
 
     const response = await axios.post(`${BASE_URL}/stories`, {
       token: user.loginToken,
@@ -96,27 +83,15 @@ class StoryList {
       },
     });
 
-    // Request URL: https://hack-or-snooze-v3.herokuapp.com/stories?title=Test&author=Me&url=http:%2F%2Fmeow.com
-    //'{"token":"PASTE_YOUR_TOKEN_HERE", "story": {"author":"Elie Schoppik","title":"Four Tips for Moving Faster as a Developer",
-    // "url": "https://www.rithmschool.com/blog/developer-productivity"} }' \
-    // https://hack-or-snooze-v3.herokuapp.com/stories
     const responseData = response.data.story;
-    console.log("responseData", response.data.story);
 
     const addedStory = new Story(responseData);
+    // add to storyList (unshift);
+    this.stories.unshift(addedStory);
+
     return addedStory;
   }
 }
-
-// BODY
-// {
-//   "token": "YOUR_TOKEN_HERE",
-//   "story": {
-//     "author": "Matt Lane",
-//     "title": "The best story ever",
-//     "url": "http://google.com"
-//   }
-// }
 
 /******************************************************************************
  * User: a user in the system (only used to represent the current user)
