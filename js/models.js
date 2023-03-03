@@ -203,4 +203,18 @@ class User {
       return null;
     }
   }
+
+  /*
+    addFavorite(){
+        //update the favorites array of this
+    }
+
+
+
+    removeFavorite(){
+      //update the favorites array of this
+    }
+  */
+
+
 }
