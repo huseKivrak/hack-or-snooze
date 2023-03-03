@@ -20,6 +20,13 @@ currentUser.addFavorite(story);
     - `storyList.getStoryID()`?
 
 
+add favorite (POST): https://hack-or-snooze-v3.herokuapp.com/users/username/favorites/storyId
+
+delete favorite (DELETE): https://hack-or-snooze-v3.herokuapp.com/users/username/favorites/storyId
+
+
+
+
 ## HTML
 - make favorite section in HTML
     - hidden
@@ -35,3 +42,14 @@ currentUser.addFavorite(story);
     - don't refresh page
     - should be able to show stories no longer on front page (API request);
 - **event delegation**: add functionality to fave buttons that don't exist yet
+- on DOM: after <li>, before <a>;
+
+
+.on('click', '.fave', "whole page, () =>{
+    if (already favorite){
+        .removeFavorite()
+    } else{
+        .addFavorite()
+    }
+})
+

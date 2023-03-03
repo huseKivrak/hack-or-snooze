@@ -24,7 +24,8 @@ class Story {
 
   getHostName() {
     // TODO:  UNIMPLEMENTED: complete this function!
-    return this.url; // https://tinyurl.com/2n7tx84r ?
+    const hostName = new URL(this.url).hostname;
+    return hostName; // https://tinyurl.com/2n7tx84r ?
   }
 }
 
