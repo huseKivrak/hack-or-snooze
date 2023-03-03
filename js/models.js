@@ -234,7 +234,6 @@ class User {
     // REMOVE FAV FROM DOM
   }
 
-
   // let story = storyList.stories[0];   // grab first story on list
   // currentUser.addFavorite(story);
 

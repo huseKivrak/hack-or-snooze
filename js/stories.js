@@ -91,11 +91,40 @@ function addUserFavorites() {
 
   const userFavorites = currentUser.favorites;
 
+  for (const favorite of userFavorites) {
+    const markedUpFavorite = generateStoryMarkup(favorite);
+    $favoritesList.append(markedUpFavorite);
+  }
 
-    for (const favorite of userFavorites) {
-      const markedUpFavorite = generateStoryMarkup(favorite);
-      $favoritesList.append(markedUpFavorite);
-    }
-
-    $favoritesList.addClass('favesAdded');
+  $favoritesList.addClass("favesAdded");
 }
+
+/** This function will toggle on click of the star within that story div.
+ * It will add a story to the list of favorite stories, or remove a story from
+ * our list of favorite stories depending on the star's current class list.
+ */
+
+async function addOrRemoveFavStory(evt) {
+  let $star = $(evt.target);
+  const $closestStory = $($star.closest("li"));
+  const closestStoryId = $closestStory.attr("id");
+  console.log("closestStoryID to click", closestStoryId);
+  let nearestStory;
+  // find closest story
+  for (let story of storyList.stories) {
+    if (story.storyId === closestStoryId) {
+      nearestStory = story;
+    }
+  }
+  console.log(nearestStory);
+
+  if ($star.hasClass("favorited")) {
+    currentUser.removeFavorite(nearestStory);
+    $star.removeClass("favorited");
+  } else {
+    currentUser.addFavorite(nearestStory);
+    $star.addClass("favorited");
+  }
+}
+
+$allStoriesList.on("click", ".bi-star", addOrRemoveFavStory);
