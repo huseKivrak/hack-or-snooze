@@ -51,37 +51,31 @@ function putStoriesOnPage() {
   $allStoriesList.show();
 }
 
+/** This function fires on click of our submit form.
+ * It will take in the users submit form data, and prepend
+ * that data to the list of stories.
+ */
+
 async function getSubmitFormData(evt) {
+  console.log("Submit Form Data Received");
   evt.preventDefault();
-  // "author-name"
-  // "title-name"
-  // "url-name"
-  const $author = $("#author-name").val();
-  const $title = $("#title-name").val();
-  const $url = $("#url-name").val();
+
+  const authorInput = $("#author-name").val();
+  const titleInput = $("#title-name").val();
+  const urlInput = $("#url-name").val(); //
 
   const newStorySubmission = {
-    author: $author,
-    title: $title,
-    url: $url,
+    author: authorInput,
+    title: titleInput,
+    url: urlInput,
   };
 
-  // console.log("newStorySub: ", newStorySubmission);
   const addedStory = await storyList.addStory(currentUser, newStorySubmission);
-  console.log('addedStory', addedStory);
 
+  const markedUpStory = generateStoryMarkup(addedStory);
 
-  const storyHtml = `<li id=${addedStory.storyId}>
-  <a href="${addedStory.url}" target="a_blank" class="story-link">${addedStory.title}</a>
- <small class="story-hostname">(hostname.com)</small>
- <small class="story-author">${addedStory.author}</small>
- <small class="story-user">${currentUser}</small>
- </li>`;
-
- console.log('storyHtml: ', storyHtml);
-//  const $allStoriesList = $('#all-stories-list');
-
- $allStoriesList.prepend(storyHtml);
+  $allStoriesList.prepend(markedUpStory);
+  console.log("Story prepended to Stories List");
 }
 
 const $newStoryForm = $("#add-story-form");

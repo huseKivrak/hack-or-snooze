@@ -37,15 +37,17 @@ function updateNavOnLogin() {
   $navUserProfile.text(`${currentUser.username}`).show();
 }
 
-function navShowSubmitForm(evt){
-  console.log('submit form called');
+/** This function fires on clicking of navbar submit link. It will show
+ * the submit form so that a user can submit a new story.
+ */
+
+function navShowSubmitForm(evt) {
+  console.log("Submit Form shown on page");
   evt.preventDefault();
-  const $submitFormSection = $('.submit-form-container');
+  const $submitFormSection = $(".submit-form-container");
 
   $submitFormSection.show();
 }
 
-
-
-const $navSubmit = $('#nav-submit');
-$navSubmit.on('click', navShowSubmitForm);
+const $navSubmit = $("#nav-submit");
+$navSubmit.on("click", navShowSubmitForm);
