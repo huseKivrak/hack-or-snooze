@@ -25,6 +25,10 @@ function generateStoryMarkup(story) {
   const hostName = story.getHostName();
   return $(`
       <li id="${story.storyId}">
+      <span class="star">
+      <i class="bi bi-star">
+      </i>
+      </span>
         <a href="${story.url}" target="a_blank" class="story-link">
           ${story.title}
         </a>
@@ -80,3 +84,18 @@ async function getSubmitFormData(evt) {
 
 const $newStoryForm = $("#add-story-form");
 $newStoryForm.on("submit", getSubmitFormData);
+
+/** Gets user favorites and populate favorites section */
+function addUserFavorites() {
+  console.log("getUserFavorites");
+
+  const userFavorites = currentUser.favorites;
+
+
+    for (const favorite of userFavorites) {
+      const markedUpFavorite = generateStoryMarkup(favorite);
+      $favoritesList.append(markedUpFavorite);
+    }
+
+    $favoritesList.addClass('favesAdded');
+}

@@ -205,10 +205,8 @@ class User {
     }
   }
 
+  /** */
   async addFavorite(story) {
-    console.log(
-      `${BASE_URL}/users/${this.username}/favorites/${story.storyId}`
-    );
     this.favorites.push(story);
     const response = await axios({
       data: {
@@ -221,6 +219,7 @@ class User {
     // ADD FAVORITE TO DOM
   }
 
+  /** */
   async removeFavorite(story) {
     this.favorites.splice(this.favorites.indexOf(story), 1);
 
@@ -234,6 +233,7 @@ class User {
     console.log("response deleted", response.data);
     // REMOVE FAV FROM DOM
   }
+
 
   // let story = storyList.stories[0];   // grab first story on list
   // currentUser.addFavorite(story);

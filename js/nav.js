@@ -51,3 +51,20 @@ function navShowSubmitForm(evt) {
 
 const $navSubmit = $("#nav-submit");
 $navSubmit.on("click", navShowSubmitForm);
+
+
+
+/** hides all stories and displays user favorites */
+function navShowFavorites(evt) {
+  evt.preventDefault();
+
+  if (!($favoritesList.hasClass('favesAdded'))) addUserFavorites();
+
+  const $accountFormsContainer = $('.account-forms-container');
+  $accountFormsContainer.hide(); //fix this? auto-hides on refresh;
+  $allStoriesList.hide();
+  $favoritesContainer.show();
+}
+
+const $navFavorites = $('#nav-favorite');
+$navFavorites.on('click', navShowFavorites);
