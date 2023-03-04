@@ -205,7 +205,10 @@ class User {
     }
   }
 
-  /** */
+  /** Add Favorite takes in an argument of a story and makes a POST
+   * request to the hack-or-snooze API, adding the the story to
+   * the current users list of favorited stories.
+   */
   async addFavorite(story) {
     this.favorites.push(story);
     const response = await axios({
@@ -216,10 +219,12 @@ class User {
       method: "POST",
     });
     console.log(response.data);
-    // ADD FAVORITE TO DOM
   }
 
-  /** */
+  /** RemoveFavorite takes in an argument of a story and makes a DELETE
+   * request to the hack-or-snooze API, removing the story from the current
+   * users list of favorited stories.
+   */
   async removeFavorite(story) {
     this.favorites.splice(this.favorites.indexOf(story), 1);
 
