@@ -26,7 +26,7 @@ function generateStoryMarkup(story) {
   return $(`
       <li id="${story.storyId}">
       <span class="star">
-      <i class="bi bi-star">
+      <i class="bi bi-star${starStatus(story)}">
       </i>
       </span>
         <a href="${story.url}" target="a_blank" class="story-link">
@@ -39,6 +39,10 @@ function generateStoryMarkup(story) {
     `);
 }
 
+function starStatus(story){
+  return currentUser.favorites.includes(story) ? "-fill" : "";
+}
+
 /** Gets list of stories from server, generates their HTML, and puts on page. */
 
 function putStoriesOnPage() {
@@ -48,7 +52,7 @@ function putStoriesOnPage() {
 
   // loop through all of our stories and generate HTML for them
   for (let story of storyList.stories) {
-    const $story = generateStoryMarkup(story);
+    const $story = generateStoryMarkup(story); //
     $allStoriesList.append($story);
   }
 
@@ -105,6 +109,7 @@ function addUserFavorites() {
  */
 
 async function addOrRemoveFavStory(evt) {
+  console.log('addOrRemoveFavStory');
   let $star = $(evt.target);
   const $closestStory = $($star.closest("li"));
   const closestStoryId = $closestStory.attr("id");
@@ -130,3 +135,4 @@ async function addOrRemoveFavStory(evt) {
 }
 
 $allStoriesList.on("click", ".bi", addOrRemoveFavStory);
+$favoritesList.on("click", ".bi", addOrRemoveFavStory);

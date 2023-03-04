@@ -23,7 +23,7 @@ class Story {
   /** Parses hostname out of URL and returns it. */
 
   getHostName() {
-    // TODO:  UNIMPLEMENTED: complete this function!
+
     const hostName = new URL(this.url).hostname;
     return hostName; // https://tinyurl.com/2n7tx84r ?
   }
@@ -210,6 +210,7 @@ class User {
    * the current users list of favorited stories.
    */
   async addFavorite(story) {
+    console.log('addFavorites');
     this.favorites.push(story);
     const response = await axios({
       data: {
@@ -226,6 +227,7 @@ class User {
    * users list of favorited stories.
    */
   async removeFavorite(story) {
+    console.log('removeFavorites');
     this.favorites.splice(this.favorites.indexOf(story), 1);
 
     const response = await axios({
