@@ -114,7 +114,7 @@ async function addOrRemoveFavStory(evt) {
   const $closestStory = $($star.closest("li"));
   const closestStoryId = $closestStory.attr("id");
   console.log("closestStoryID to click", closestStoryId);
-  let nearestStory;
+  let nearestStory; //TODO: does not access API (fetch from API by ID, not storyList)
   // find closest story
   for (let story of storyList.stories) {
     if (story.storyId === closestStoryId) {

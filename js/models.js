@@ -87,7 +87,7 @@ class StoryList {
     const responseData = response.data.story;
 
     const addedStory = new Story(responseData);
-    // add to storyList (unshift);
+
     this.stories.unshift(addedStory);
 
     return addedStory;
