@@ -118,13 +118,15 @@ async function addOrRemoveFavStory(evt) {
   }
   console.log(nearestStory);
 
-  if ($star.hasClass("favorited")) {
+  if ($star.hasClass("bi-star-fill")) {
     currentUser.removeFavorite(nearestStory);
-    $star.removeClass("favorited");
+    $star.removeClass("bi-star-fill");
+    $star.addClass("bi-star");
   } else {
     currentUser.addFavorite(nearestStory);
-    $star.addClass("favorited");
+    $star.removeClass("bi-star");
+    $star.addClass("bi-star-fill");
   }
 }
 
-$allStoriesList.on("click", ".bi-star", addOrRemoveFavStory);
+$allStoriesList.on("click", ".bi", addOrRemoveFavStory);

@@ -44,7 +44,6 @@ function updateNavOnLogin() {
 function navShowSubmitForm(evt) {
   console.log("Submit Form shown on page");
   evt.preventDefault();
-  const $submitFormSection = $(".submit-form-container");
 
   $submitFormSection.show();
 }
@@ -52,19 +51,17 @@ function navShowSubmitForm(evt) {
 const $navSubmit = $("#nav-submit");
 $navSubmit.on("click", navShowSubmitForm);
 
-
-
 /** hides all stories and displays user favorites */
 function navShowFavorites(evt) {
   evt.preventDefault();
 
-  if (!($favoritesList.hasClass('favesAdded'))) addUserFavorites();
+  if (!$favoritesList.hasClass("favesAdded")) addUserFavorites();
 
-  const $accountFormsContainer = $('.account-forms-container');
+  const $accountFormsContainer = $(".account-forms-container");
   $accountFormsContainer.hide(); //fix this? auto-hides on refresh;
   $allStoriesList.hide();
   $favoritesContainer.show();
 }
 
-const $navFavorites = $('#nav-favorite');
-$navFavorites.on('click', navShowFavorites);
+const $navFavorites = $("#nav-favorite");
+$navFavorites.on("click", navShowFavorites);

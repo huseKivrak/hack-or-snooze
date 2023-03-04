@@ -231,44 +231,5 @@ class User {
       method: "DELETE",
     });
     console.log("response deleted", response.data);
-    // REMOVE FAV FROM DOM
   }
-
-  // let story = storyList.stories[0];   // grab first story on list
-  // currentUser.addFavorite(story);
-
-  // async removeFavorite(story) {
-  //   for (let favorite of this.favorites) {
-  //     if (story ===)
-  //   }
-  // }
-
-  // const response = await axios({
-  //   url: `${BASE_URL}/signup`,
-  //   method: "POST",
-  //   data: { user: { username, password, name } },
-  // });
-
-  // https://hack-or-snooze-v3.herokuapp.com/users/username/favorites/storyId
-
-  // const response = await axios.post(`${BASE_URL}/stories`, {
-  //   token: user.loginToken,
-  //   story: {
-  //     author: newStory.author,
-  //     title: newStory.title,
-  //     url: newStory.url,
-  //   },
-  // });
-
-  /*
-    addFavorite(){
-        //update the favorites array of this
-    }
-
-
-
-    removeFavorite(){
-      //update the favorites array of this
-    }
-  */
 }
